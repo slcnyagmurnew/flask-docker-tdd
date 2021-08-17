@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'docker ps -v $(which docker):/usr/bin/docker --privileged'
+                sh 'docker-compose -v'
             }
         }
 	stage('test') {
