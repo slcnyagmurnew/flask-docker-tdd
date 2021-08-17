@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'docker-compose -v'
+                sh 'docker-compose up'
             }
         }
 	stage('test') {
 	    steps {
-		echo 'testing application'	
+		sh 'which tests/'	
 	    }
 	}
     }
