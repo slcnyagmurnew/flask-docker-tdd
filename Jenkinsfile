@@ -9,7 +9,7 @@ pipeline {
         }
 	stage('test') {
 	    steps {
-		sh 'docker exec -it 8ac7 /bin/bash'
+		sh 'docker exec -i 8ac7 /bin/bash'
 		sh 'python3 -m pytest tests/'
 		sh 'exit'
 	    }
