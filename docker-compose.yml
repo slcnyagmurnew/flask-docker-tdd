@@ -20,6 +20,4 @@ services:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: tddflask
     volumes:
-      - ./db:/docker-entrypoint-initdb.d
-    command: mysqld --init-file="docker-entrypoint-initdb.d/init.sql"
-
+      - ./db:/docker-entrypoint-initdb.d:/ro
