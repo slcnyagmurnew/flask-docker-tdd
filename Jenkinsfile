@@ -4,13 +4,12 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'bash setup.sh'
-		sh 'cd Project/flask-docker-tdd && docker-compose up -d'
+		sh 'docker-compose down --volumes'
             }
         }
 	stage('test') {
 	    steps {
-		sh 'docker exec pipelinednm_web_1 pip3 install pytest && docker exec pipelinednm_web_1 python3 -m pytest tests'
+		// sh 'docker exec pipelinednm_web_1 pip3 install pytest && docker exec pipelinednm_web_1 python3 -m pytest tests'
 		echo 'cartcurt'
 	    }
 	}
