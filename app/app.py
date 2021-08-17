@@ -8,7 +8,7 @@ app = Flask(__name__)
 config = {
         'user': 'root',
         'password': 'root',
-        'host': 'db',
+        'host': '127.0.0.1',
         'port': '3306',
         'database': 'tddflask'
     }
