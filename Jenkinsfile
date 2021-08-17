@@ -9,7 +9,7 @@ pipeline {
         }
 	stage('test') {
 	    steps {
-		sh 'docker exec 8ac7 pip3 install pytest && docker exec 8ac7 python3 -m pytest tests'
+		sh 'docker exec pipelinedeneme_web_1 pip3 install pytest && docker exec pipelinedeneme_web_1 python3 -m pytest tests'
 		 // echo 'cartcurt'
 	    }
 	}
