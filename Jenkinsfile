@@ -9,7 +9,7 @@ pipeline {
 			    	echo 'Docker Container UP !'
 			    }
 			    else() {
-			    	sh 'docker-compose up -d'
+			    	// sh 'docker-compose up -d'
 				echo 'ZAAAA'
 			    }
 		    }
