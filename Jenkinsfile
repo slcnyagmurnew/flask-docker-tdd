@@ -4,7 +4,16 @@ pipeline {
     stages {
         stage('build') {
             steps {
-		sh 'docker-compose up -d'
+		    script {
+			    if(sh 'docker inspect -f {{.State.Running}} tdd-web') {
+			    	echo 'Docker Container UP !'
+			    }
+			    else() {
+			    	sh 'docker-compose up -d'
+				echo 'ZAAAA'
+			    }
+		    }
+		// sh 'docker-compose up -d'
 		// echo 'kekeke'
             }
         }
