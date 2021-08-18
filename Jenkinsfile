@@ -9,7 +9,7 @@ pipeline {
 	    catch (err) {
 	 	echo 'Building started !'
 		sh 'docker-compose up -d'
-		    // throw err
+		throw err
 	    }
         }
 	stage('preparation-test') {
