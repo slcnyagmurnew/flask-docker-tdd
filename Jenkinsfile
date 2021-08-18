@@ -11,12 +11,17 @@ pipeline {
 	stage('preparation-test') {
 	    steps {
 		sh 'docker exec tdd-web pip3 install pytest'
-		sh 'sleep 20'
-		echo 'Wait Completed !'
+		// sh 'sleep 20'
+		echo 'Pytest Installed !'
 	    }
 	}
 	stage('test') {
 	    steps {
+		sh 'sleep 20'
+		echo 'Wait Completed !
+		sh 'docker exec tdd-web python3 -m pytest tests'
+		echo 'Waiting for Second Test Stage'
+		sh 'sleep 10'
 		sh 'docker exec tdd-web python3 -m pytest tests'
 		echo 'Test Completed !'
 	    }
