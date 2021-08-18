@@ -17,7 +17,7 @@ pipeline {
 	}
 	stage('test') {
 	    steps {
-		sh 'sleep 20'
+		sh 'sleep 60'
 		echo 'Wait Completed !'
 		sh 'docker exec tdd-web python3 -m pytest tests'
 		echo 'Waiting for Second Test Stage'
