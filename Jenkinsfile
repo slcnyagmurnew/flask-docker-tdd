@@ -9,17 +9,15 @@ pipeline {
         stage('build') {
             steps {
 		    script {
-			    if(sh(script: 'docker inspect -f {{.State.Running}} tdd-web') == 'true') {
-			    	echo 'Docker Container UP !'
-			    }
-			    else {
-			    	// sh 'docker-compose up -d'
-				echo 'ZAAAA'
-				echo RESULT
-			    }
+		    	try {
+		        	sh 'nc -vz 127.0.0.1 5000'
+		        	echo 'Docker already up !'
+	            	}
+	            	catch (err) {
+	 	        	echo 'Building started !'
+		        	sh 'docker-compose up -d'
+	            	}
 		    }
-		// sh 'docker-compose up -d'
-		// echo 'kekeke'
             }
         }
 	stage('preparation-test') {
@@ -31,11 +29,17 @@ pipeline {
 	}
 	stage('test') {
 	    steps {
-		sh 'sleep 60'
-		echo 'Wait Completed !'
-		sh 'docker exec tdd-web python3 -m pytest tests'
-		echo 'Waiting for Second Test Stage'
-		sh 'sleep 10'
+		script {
+		    	try {
+		        	sh 'nc -vz 127.0.0.1 32000'
+		        	echo 'NO NEED FOR SLEEP !'
+	            	}
+	            	catch (err) {
+	 	        	echo 'SLEEP REQUIRED !'
+		        	sh 'sleep 60'
+				echo 'Wait Completed !'
+	            	}
+		}
 		sh 'docker exec tdd-web python3 -m pytest tests'
 		echo 'Test Completed !'
 	    }
