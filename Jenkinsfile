@@ -9,7 +9,7 @@ pipeline {
         }
 	stage('test') {
 	    steps {
-		sh 'docker exec pipelinednm_web_1 pip3 install pytest && docker exec pipelinednm_web_1 python3 -m pytest tests'
+		sh 'docker exec tdd-web pip3 install pytest && docker exec tdd-db python3 -m pytest tests'
 		echo 'cartcurt'
 	    }
 	}
