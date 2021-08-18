@@ -9,7 +9,7 @@ pipeline {
         stage('build') {
             steps {
 		    script {
-			    if(RESULT == true) {
+			    if(sh(script: 'docker inspect -f {{.State.Running}} tdd-web')) {
 			    	echo 'Docker Container UP !'
 			    }
 			    else {
