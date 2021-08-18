@@ -1,10 +1,16 @@
 pipeline {
-    agent { docker { image 'python:3.6-slim' } }
+    agent any
+	
     stages {
         stage('build') {
             steps {
-                echo 'python --version'
+		        sh 'docker-compose up -d'
             }
         }
+	    stage('test') {
+	        steps {
+		        sh 'docker exec tdd-web pip3 install pytest && docker exec tdd-db python3 -m pytest tests'
+	        }
+	    }
     }
 }
