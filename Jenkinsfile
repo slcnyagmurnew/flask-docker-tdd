@@ -1,11 +1,15 @@
 pipeline {
     agent any
 	
+    environment {
+        RESULT = sh(script: 'docker inspect -f {{.State.Running}} tdd-web')
+    }
+	
     stages {
         stage('build') {
             steps {
 		    script {
-			    if(sh 'docker inspect -f {{.State.Running}} tdd-web') {
+			    if(RESULT == true) {
 			    	echo 'Docker Container UP !'
 			    }
 			    else() {
