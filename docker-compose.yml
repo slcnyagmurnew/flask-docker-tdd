@@ -7,7 +7,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      MYSQL_HOST: "127.0.0.1"
+      MYSQL_HOST: "db"
       MYSQL_PASSWORD: "root"
       MYSQL_DB: tddflask
     links:
