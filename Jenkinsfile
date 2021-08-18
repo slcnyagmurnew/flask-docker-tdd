@@ -8,7 +8,7 @@ pipeline {
             steps {
 		echo result
 		sh 'type result'
-		if(result == 'true') {
+		if(result == true) {
 		    echo 'selam'
 		}
 		else {
