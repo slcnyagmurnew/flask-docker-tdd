@@ -1,11 +1,19 @@
 pipeline {
     agent any
-	
+    environment {
+        result = sh(script: 'docker inspect -f {{.State.Running}} tdd-web')
+    }
     stages {
         stage('build') {
             steps {
-		sh 'docker-compose up -d'
-		// echo 'kekeke'
+		echo result
+		sh 'type result'
+		if(result == 'true') {
+		    echo 'selam'
+		}
+		else {
+		    sh 'docker-compose up -d'
+		}
             }
         }
 	stage('preparation-test') {
