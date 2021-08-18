@@ -1,10 +1,6 @@
 pipeline {
     agent any
-	
-    environment {
-        RESULT = sh(script: 'docker inspect -f {{.State.Running}} tdd-web')
-    }
-	
+
     stages {
         stage('build') {
             steps {
