@@ -12,7 +12,7 @@ pipeline {
 			    if(RESULT == true) {
 			    	echo 'Docker Container UP !'
 			    }
-			    else() {
+			    else {
 			    	// sh 'docker-compose up -d'
 				echo 'ZAAAA'
 			    }
