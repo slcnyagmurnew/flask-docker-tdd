@@ -23,8 +23,17 @@ pipeline {
 	}
 	stage('test') {
 	    steps {
-		sh 'sleep 60'
-		echo 'Wait Completed !'
+		script {
+		    try {
+		        sh 'nc -vz 127.0.0.1 32000'
+		        echo 'No need for sleep, continue..'
+	            }
+	            catch (err) {
+	 	        echo 'Sleep required, wait a moment..'
+			sh 'sleep 60'
+			echo 'Wait Completed !'
+	            }
+		}
 		sh 'docker exec tdd-web python3 -m pytest tests'
 		echo 'Test Passed !'
 	    }
