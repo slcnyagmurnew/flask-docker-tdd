@@ -8,13 +8,15 @@ pipeline {
             steps {
 		echo result
 		sh 'type result'
-		if(result == true) {
-		    echo 'selam'
+		script {
+		    if(result == true) {
+			echo 'selam'
+		    }
+		    else {
+			sh 'docker-compose up -d'
+		    }
 		}
-		else {
-		    sh 'docker-compose up -d'
-		}
-            }
+	    }
         }
 	stage('preparation-test') {
 	    steps {
