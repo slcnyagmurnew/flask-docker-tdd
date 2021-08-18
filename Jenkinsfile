@@ -15,6 +15,7 @@ pipeline {
 			    else {
 			    	// sh 'docker-compose up -d'
 				echo 'ZAAAA'
+				echo RESULT
 			    }
 		    }
 		// sh 'docker-compose up -d'
