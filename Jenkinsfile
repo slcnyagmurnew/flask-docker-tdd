@@ -1,21 +1,16 @@
 pipeline {
     agent any
-    environment {
-        // result = sh(script: 'docker inspect -f {{.State.Running}} tdd-web')
-	result = sh(script: 'nc -vz 127.0.0.1 5000')
-    }
     stages {
         stage('build') {
             steps {
-		echo result
-		sh 'type result'
-		script {
-		    if(result == true) {
-			echo 'selam'
-		    }
-		    else {
-			sh 'docker-compose up -d'
-		    }
+		try {
+		    sh 'nc -vz 127.0.0.1 5000'
+		    echo 'Docker already up !'
+		}
+		catch (err) {
+	 	    echo 'Building started !'
+		    sh 'docker-compose up -d'
+		    // throw err
 		}
 	    }
         }
