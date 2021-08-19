@@ -17,10 +17,13 @@ config = {
 def add_data(name, color):
     connection = mysql.connector.connect(**config)
     cursor = connection.cursor()
-    query = 'INSERT INTO favorite_colors (name, color) VALUES (%s, %s)'
-    val = (name, color)
-    cursor.execute(query, val)
-    connection.commit()
+    try:
+        query = 'INSERT INTO favorite_colors (name, color) VALUES (%s, %s)'
+        val = (name, color)
+        cursor.execute(query, val)
+        connection.commit()
+    except:
+        print("primary key error")
     cursor.close()
     connection.close()
 
