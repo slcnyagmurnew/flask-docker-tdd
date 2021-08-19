@@ -23,7 +23,3 @@ services:
       MYSQL_DATABASE: tddflask
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
-
-volumes:
-  db-data:
-
