@@ -40,7 +40,8 @@ pipeline {
 	}
 	stage('finish') {
 		steps {
-			sh 'docker-compose down'
+			// sh 'docker-compose down'
+			echo 'finish'
 		}
 	}
     }
