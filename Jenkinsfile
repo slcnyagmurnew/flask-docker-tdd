@@ -38,5 +38,10 @@ pipeline {
 		echo 'Test Passed !'
 	    }
 	}
+	stage('finish') {
+		steps {
+			sh 'docker-compose down'
+		}
+	}
     }
 }
