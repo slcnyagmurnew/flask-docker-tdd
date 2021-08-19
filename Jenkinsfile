@@ -14,10 +14,10 @@ node('master') {
 	if (env.BRANCH_NAME == 'master') {
             AGENT_LABEL = "prod"3
 	    echo 'masterdeyim'
-	    echo AGENT_LABEL
         } else {
             AGENT_LABEL = "dev"
 	    echo 'devdeyim'
+	    echo AGENT_LABEL
         }
     }
 }
