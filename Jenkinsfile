@@ -26,13 +26,13 @@ pipeline {
 		script {
 		    try {
 		        sh 'nc -vz 127.0.0.1 32000'
-		        echo 'No need for sleep, continue..'
+			sh 'sleep 30'
 	            }
 	            catch (err) {
 	 	        echo 'Sleep required, wait a moment..'
 			sh 'sleep 60'
-			echo 'Wait Completed !'
 	            }
+		    echo 'Wait Completed !'
 		}
 		sh 'docker exec tdd-web python3 -m pytest tests'
 		echo 'Test Passed !'
