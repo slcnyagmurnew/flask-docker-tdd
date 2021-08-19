@@ -25,6 +25,7 @@ pipeline {
     stages {
         stage('build') {
 	    steps {
+		echo "Running in ${AGENT_LABEL}"
 		script {
 		    try {
 		        sh 'nc -vz 127.0.0.1 5000'
