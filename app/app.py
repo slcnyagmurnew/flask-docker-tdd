@@ -69,7 +69,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/find/<name>', methods=["POST", "GET"])
+@app.route('/find', methods=["POST", "GET"])
 def find(name):
     return json.dumps({'favorite_color': find_data(name)})
 
