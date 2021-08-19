@@ -5,6 +5,9 @@ import json
 
 app = Flask(__name__)
 
+isim = ''
+renk = ''
+
 config = {
         'user': 'root',
         'password': 'root',
@@ -57,7 +60,10 @@ def index():
         if request.form['submitbutton'] == 'Submit':
             name = request.form['fname']
             color = request.form['colorname']
-            add_data(name, color)
+            if (isim == name && renk == color):
+                print('NOT ALLOWED !')
+            else:
+                add_data(name, color)
         elif request.form["submitbutton"] == 'Find':
             name = request.form['kname']
             return redirect(url_for('find', name=name))
