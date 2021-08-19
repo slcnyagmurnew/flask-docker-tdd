@@ -19,13 +19,11 @@ node('master') {
     }
 }
 pipeline {
-    agent {
-	label AGENT_LABEL
-    }
+    agent any
     stages {
         stage('build') {
 	    steps {
-		echo "Running in ${AGENT_LABEL}"
+		echo AGENT_LABEL
 		script {
 		    try {
 		        sh 'nc -vz 127.0.0.1 5000'
