@@ -1,16 +1,28 @@
+def AGENT_LABEL = null
+node('master') {
+    stage('scm') {
+	//steps {
+	//    properties([gitLabConnection('your-gitlab-connection-name')])
+        //    node {
+	//        checkout([$class: 'GitSCM', branches: [[name: '*/dev' ]],
+	//        userRemoteConfigs: [[url: 'https://github.com/slcnyagmurnew/flask-docker-tdd.git']]])
+	        // checkout scm // Jenkins will clone the appropriate git branch, no env vars needed
+	//    }
+	    
+        //}
+        checkout scm
+	if (env.BRANCH_NAME == 'master') {
+            AGENT_LABEL = "prod"
+        } else {
+            AGENT_LABEL = "dev"
+        }
+    }
+}
 pipeline {
-    agent any
+    agent {
+	label '${AGENT_LABEL}'
+    }
     stages {
-	stage('scm') {
-	    steps {
-		properties([gitLabConnection('your-gitlab-connection-name')])
-	        node {
-		checkout([$class: 'GitSCM', branches: [[name: '*/dev' ]],
-		    userRemoteConfigs: [[url: 'https://github.com/slcnyagmurnew/flask-docker-tdd.git']]])
-		    // checkout scm // Jenkins will clone the appropriate git branch, no env vars needed
-		}
-	    }
-	}
         stage('build') {
 	    steps {
 		script {
