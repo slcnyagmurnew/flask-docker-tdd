@@ -2,8 +2,8 @@ CREATE DATABASE IF NOT EXISTS tddflask;
 use tddflask;
 
 CREATE TABLE favorite_colors (
-  name VARCHAR(20),
-  color VARCHAR(10),
+  name VARCHAR(20) NOT NULL,
+  color VARCHAR(10) NOT NULL,
   Primary Key(name)
 );
 
