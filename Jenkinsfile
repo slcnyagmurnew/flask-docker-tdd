@@ -24,6 +24,7 @@ pipeline {
         stage('build') {
 	    steps {
 		echo AGENT_LABEL
+		echo 'hi from diff'
 		script {
 		    try {
 		        sh 'nc -vz 127.0.0.1 5000'
