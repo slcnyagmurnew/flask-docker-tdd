@@ -7,6 +7,7 @@ pipeline {
 		    try {
 		        sh 'nc -vz 127.0.0.1 5000'
 		        echo 'Docker already up !'
+			sh 'docker-compose down -v'
 	            }
 	            catch (err) {
 	 	        echo 'Building started !'
