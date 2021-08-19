@@ -39,6 +39,7 @@ pipeline {
         }
 	stage('preparation-test') {
 	    steps {
+		echo 'deneme12'
 		sh 'docker exec tdd-web pip3 install pytest'
 	    }
 	}
