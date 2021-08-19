@@ -12,18 +12,15 @@ node('master') {
         //}
         checkout scm
 	if (env.BRANCH_NAME == 'master') {
-            AGENT_LABEL = "prod"3
-	    echo 'masterdeyim'
+            AGENT_LABEL = "prod"
         } else {
             AGENT_LABEL = "dev"
-	    echo 'devdeyim'
-	    echo AGENT_LABEL
         }
     }
 }
 pipeline {
     agent {
-	label '${AGENT_LABEL}'
+	label AGENT_LABEL
     }
     stages {
         stage('build') {
