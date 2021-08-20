@@ -51,7 +51,7 @@ def find_data(name) -> List[Dict]:
     cursor.close()
     connection.close()
 
-    return results
+    return None
 
 
 @app.route('/', methods=['POST', 'GET'])
