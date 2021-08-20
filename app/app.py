@@ -20,6 +20,7 @@ def add_data(name, color):
     query = 'INSERT INTO favorite_colors (name, color) VALUES (%s, %s)'
     val = (name, color)
     cursor.execute(query, val)
+    print('selam')
     connection.commit()
     cursor.close()
     connection.close()
