@@ -49,9 +49,10 @@ def find_data(name) -> List[Dict]:
     cursor.execute(query, val)
     results = [{name: color} for (name, color) in cursor]
     cursor.close()
+    print('hmmmmmmm')
     connection.close()
 
-    return None
+    return results
 
 
 @app.route('/', methods=['POST', 'GET'])
