@@ -49,7 +49,7 @@ def find_data(name) -> List[Dict]:
     cursor.execute(query, val)
     results = [{name: color} for (name, color) in cursor]
     cursor.close()
-    print('hmmmmmmm')
+    print('hmmmmmmma')
     connection.close()
 
     return results
